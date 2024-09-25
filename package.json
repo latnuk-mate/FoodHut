@@ -1,0 +1,15 @@
+{
+  "name": "foodhut",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "node-sass -w dist/ -o css/ --recursive"
+  },
+  "keywords": [],
+  "author": "latnuk",
+  "license": "MIT",
+  "devDependencies": {
+    "node-sass": "^9.0.0"
+  }
+}
