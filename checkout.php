@@ -8,6 +8,7 @@ if(!isset($_SESSION['username'])){
 if(isset($_POST['userName'])){
     $user = $_POST['userName'];
     $number = $_POST['customerPhone'];
+    $productCount = $_POST['itemCount'];
 
     $itemPrice = $_GET["price"];
     $itemName = $_GET["item"];
@@ -16,6 +17,7 @@ if(isset($_POST['userName'])){
 $_SESSION['customerName'] = $user;
 $_SESSION['customerNumber'] = $number;
 $_SESSION['productPrice'] = $itemPrice;
+$_SESSION['productCount'] = $productCount;
 $_SESSION['productName'] = $itemName;
 $_SESSION['productImage'] = $itemImage;
 
@@ -54,10 +56,10 @@ header('Location: ./pay.php');
       <div class="collapse navbar-collapse" id="navbarList">
            <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="/">Home</a>
+                  <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" href="#">Menu</a>
+                  <a class="nav-link" href="./Menu.php">Menu</a>
                 </li>
                    <li class="nav-item">
                   <a class="nav-link" href="./index.php#booking">Book A Table</a>
@@ -262,43 +264,51 @@ header('Location: ./pay.php');
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js" integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
-    console.log(location.search)
     const urlParams = new URLSearchParams(location.search)
     const id = urlParams.get('foodId');
-    console.log(urlParams.get('foodId'))
+    const page = urlParams.get('page');
+    
 
-    fetch('./data.json')
+    if(page == 'menu'){
+        getMenuItems("https://www.themealdb.com/api/json/v1/1/search.php?s=");
+    }else{
+        getMenuItems('./data.json');
+    }
+
+function getMenuItems(url){
+    fetch(url)
     .then(response => response.json())
     .then((data) => {
-        const items = data.items;
+        const items = data.meals;
         items.map((item, index)=>{
             if(index == id){
-                renderElements(item)
+                renderElements(item, index)
             }
         })
     })
     .catch(err => console.log(err.code));
+}
 
 
-    function renderElements(item){
+    function renderElements(item, index){
             const parentElement = document.querySelector('.checkOutFood');
             parentElement.innerHTML = `
                 <div class="col-md-6 shadow-lg order-2 order-md-1">
                     <div class="p-3">
                      <div class="img--box">
-                        <img src="${item.image}" alt="Ordering food">
+                        <img src="${item.strMealThumb}" alt="Ordering food">
                     </div>
                     <div class="mt-3 fst-italic leading-2 fs-5">
-                            ${item.description}
+                            ${item['description'] ?? ""}
                     </div>
                 </div>
              </div>
 
              <div class="col-md-6 order-1 order-md-2">
                     <div class="order--text--area">
-                         <h5 class="mb-3">${item.title}</h5>
-                        <h5 class="price">Price : &#8377;${item.discountPrice}</h5>
-                    <form action="./checkout.php?item=${item.title}&price=${item.discountPrice}&image=${item.image}" method="post">
+                         <h5 class="mb-3">${item.strMeal}</h5>
+                        <h5 class="price">Price : &#8377;${item['discountPrice'] || (80 + index)*3}</h5>
+                    <form action="./checkout.php?item=${item.strMeal}&price=${item['discountPrice'] || (80 + index)*3}&image=${item.strMealThumb}" method="post">
                     <div class="form-group mb-1">
 						<label for="customerName">Your Name</label>
 						<input type="text"

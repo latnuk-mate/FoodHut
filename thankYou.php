@@ -6,11 +6,6 @@ if(!isset($_SESSION['customerName'])){
     header('Location: ./error.php');
 }
 
-if(isset($_SESSION['customerName'])){
-    $_SESSION['paymentId'] = $_GET['payment_id'];
-    $_SESSION['paymentStatus'] = $_GET['payment_status'];
-}
-
 
 // parsing the env file...
 $env = parse_ini_file('.env');
@@ -29,11 +24,23 @@ if(!$conn){
 }
 
 // get all the necessary values...
-
-
+    $productName = $_SESSION['productName'];
+    $productPrice = $_SESSION['productPrice'];
+    $productCount = $_SESSION['productCount'];
+    $productImage = $_SESSION['productImage'];
+    $productPayStatus = $_GET['payment_status'];
 
 
 // insert the values into the database.
+    $query = "INSERT INTO ProductData (product_name, product_price, product_count, product_image, product_payment_status)
+    VALUES('$productName', '$productPrice' , '$productCount', '$productImage', '$productPayStatus')";
+
+    if(mysqli_query($conn , $query)){
+    mysqli_close($conn);
+    }
+    else{
+    die('failed to insert data'.mysqli_error($conn));  
+    } 
 
 
 
@@ -70,9 +77,9 @@ if(!$conn){
             Back To Home
            </a>
 
-           <a href="./Menu.php" 
+           <a href="./order.php" 
            class="text-decoration-none text-primary px-5 py-2 bg-primary text-white rounded-pill">
-            Explore Menu
+            Check Order
            </a>
         </div>
     </div>

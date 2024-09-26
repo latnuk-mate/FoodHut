@@ -63,7 +63,7 @@
                 
                 ?>
 			<?php
-				if(isset($_SESSION['paymentId'])){
+				if(isset($_SESSION['username'])){
 					echo "<a href='./order.php' class='nav-link'>
 						<i class='fa fa-cart-shopping'></i>
 						</a>";

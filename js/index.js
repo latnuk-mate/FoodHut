@@ -32,7 +32,7 @@ $(window).on( 'load' , function(){
 	async function getFoodAndShow(){
 		const food = await fetch('./data.json');
 		const res = await food.json();
-		const data = res.items;
+		const data = res.meals;
 
 	$('.filtered--dishes .food--content').html(
 		`
@@ -41,15 +41,15 @@ $(window).on( 'load' , function(){
 			<div class="col-md-6 col-lg-4 all" id="${item.type}">
 					<div class="filter--box">
 						<div class="img--box">
-							<img src="${item.image}" alt="a tasty pizza">
+							<img src="${item.strMealThumb}" alt="a tasty pizza">
 						</div>
 				<div class="text--area">
-					<h5 class="filter--text--title dancing--script">${item.title}</h5>
+					<h5 class="filter--text--title dancing--script">${item.strMeal}</h5>
 					<p class="filter--text--subtitle">
 						${item.description}
 					</p>
 					<h5 class="menu--price">&#8377;${item.discountPrice}<small class="text-white-50"><del>${item.price}</del></small></h5>
-					<a href="./checkout.php?foodId=${index}" class="px-5 py-2">
+					<a href="./checkout.php?foodId=${index}&page=home" class="px-5 py-2">
 						Order It Now
 						<i class="fa fa-cart-shopping"></i>
 					</a>

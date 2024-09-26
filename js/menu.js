@@ -24,7 +24,7 @@ async function main() {
 					<p class="price--tag">&#8377; ${(80 + index)*3}
 					<del class="text-white-50">${((80 + index)*3)-20}</del>
 					</p>
-					<a href="/item/addtocart" class="px-5 py-2">Order Now</a>
+					<a href="./checkout.php?foodId=${index}&page=menu" class="px-5 py-2">Order Now</a>
 				</div>
 				</div>
 			</div>

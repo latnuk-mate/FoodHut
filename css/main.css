@@ -533,16 +533,31 @@ body {
       color: #303841;
       width: 100%; }
 
-.orderPageForUser {
-  justify-content: center; }
-  .orderPageForUser h5 {
-    font-size: 30px;
-    color: #303841;
-    text-align: center;
-    margin-bottom: 12px; }
-  .orderPageForUser .img--area {
+.orderPageForUser .action--btn {
+  text-decoration: none;
+  background-color: #3A4750;
+  color: #FBF9F1;
+  font-size: 18px;
+  border-radius: 200px; }
+
+.orderPageForUser h5 {
+  font-size: 30px;
+  color: #FFB72B; }
+
+.orderPageForUser .img--area {
+  padding: 10px;
+  border: 1px solid #303841;
+  box-shadow: 2px 1px 4px #303841; }
+  .orderPageForUser .img--area img {
     width: 100%;
-    border: 1px solid #303841;
-    box-shadow: 2px 1px 4px #303841; }
-    .orderPageForUser .img--area img {
-      object-fit: cover; }
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: all .2s ease-in; }
+    .orderPageForUser .img--area img:hover {
+      transform: scale(0.9); }
+
+.orderPageForUser .text--area {
+  margin-left: 10px; }
+  .orderPageForUser .text--area h5 {
+    font-size: 18px; }
