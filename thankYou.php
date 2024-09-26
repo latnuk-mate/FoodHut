@@ -8,7 +8,33 @@ if(!isset($_SESSION['customerName'])){
 
 if(isset($_SESSION['customerName'])){
     $_SESSION['paymentId'] = $_GET['payment_id'];
+    $_SESSION['paymentStatus'] = $_GET['payment_status'];
 }
+
+
+// parsing the env file...
+$env = parse_ini_file('.env');
+
+// database creadentials....
+$hostname = $env['HOSTNAME'];
+$username = $env['USERNAME'];
+$password = $env['PASSWORD'];
+$dbName =   $env['DATABASE'];
+
+//  connect the database...
+$conn = mysqli_connect($hostname, $username, $password, $dbName);
+
+if(!$conn){
+    die('connection failed'.mysqli_connect_error());
+}
+
+// get all the necessary values...
+
+
+
+
+// insert the values into the database.
+
 
 
 ?>

@@ -18,15 +18,35 @@
 <link rel="icon" href="imgs/logo.png" type="image/png" />
 </head>
 <body>
-<?php 
-// design the order page... put the order details along with the image.
-if(isset($_SESSION['productImage'])){
-    echo '<img src="' . $_SESSION["productImage"] . '" alt="" width="300" height="300">';
+<!-- design the order page... put the order details along with the image.     -->
+    <div class="container orderPageForUser">
+        <h5>Get All Your Order Details!</h5>
+    <div class="row">
+            <div class="col-lg-7">
+                <div class="row g-5">
+                    <!-- this for image... -->
+                    <div class="col-sm-6">
+                        <div class="img--area">
+                            <?php 
+                                if(isset($_SESSION['productImage'])){
+                                    echo '<img src="' . $_SESSION["productImage"] . '" alt="A Product Image">';   
+                                }
+                            ?>
+                        </div>
+                    </div>
+
+                    <!-- this for data... -->
+                    <div class="col-sm-6">
+                        <div class="text--area p-2">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </div>
 
 
-}
-
-?>
 
 </body>
 </html>

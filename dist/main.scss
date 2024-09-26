@@ -839,3 +839,25 @@ body{
 }
 
 
+.orderPageForUser{
+	justify-content: center;
+
+	h5{
+		font-size: $large--text;
+		color: $primary-color;
+		text-align: center;
+		margin-bottom: 12px;
+	}
+	
+	.img--area{
+		width: 100%;
+		border: 1px solid $primary-color;
+		box-shadow: 2px 1px 4px $primary-color;
+
+		img{
+			object-fit: cover;
+		}
+	}
+}
+
+

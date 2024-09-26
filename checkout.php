@@ -13,9 +13,6 @@ if(isset($_POST['userName'])){
     $itemName = $_GET["item"];
     $itemImage = $_GET['image'];
 
-    echo $itemImage;
-
-
 $_SESSION['customerName'] = $user;
 $_SESSION['customerNumber'] = $number;
 $_SESSION['productPrice'] = $itemPrice;

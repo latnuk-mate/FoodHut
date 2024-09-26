@@ -532,3 +532,17 @@ body {
       color: #FBF9F1;
       color: #303841;
       width: 100%; }
+
+.orderPageForUser {
+  justify-content: center; }
+  .orderPageForUser h5 {
+    font-size: 30px;
+    color: #303841;
+    text-align: center;
+    margin-bottom: 12px; }
+  .orderPageForUser .img--area {
+    width: 100%;
+    border: 1px solid #303841;
+    box-shadow: 2px 1px 4px #303841; }
+    .orderPageForUser .img--area img {
+      object-fit: cover; }

@@ -4,12 +4,14 @@
 // initializing the session..
  session_start();
 
+// parsing the env file...
+ $env = parse_ini_file('.env');
 
 // database creadentials....
-$hostname = 'localhost';
-$username = 'root';
-$password = 'Kuntal@2001';
-$dbName = 'foodhut';
+$hostname = $env['HOSTNAME'];
+$username = $env['USERNAME'];
+$password = $env['PASSWORD'];
+$dbName =   $env['DATABASE'];
 
 function sanitizeInputs($input , $filter){
     $data = filter_var(trim($input) , $filter);
@@ -41,6 +43,7 @@ $phone = sanitizeInputs($_POST['phone'], FILTER_VALIDATE_INT);
 
     if(mysqli_query($conn , $query)){
         mysqli_close($conn);
+
         header('Location: ./index.php');
     }
     else{

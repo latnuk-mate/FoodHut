@@ -2,11 +2,14 @@
 // init the session...
      session_start();
 
-    // database details...
-    $hostname = 'localhost';
-    $username = 'root';
-    $password = 'Kuntal@2001';
-    $dbName = 'foodhut';
+// parsing the env file...
+$env = parse_ini_file('.env');
+
+// database creadentials....
+$hostname = $env['HOSTNAME'];
+$username = $env['USERNAME'];
+$password = $env['PASSWORD'];
+$dbName =   $env['DATABASE'];
    
 
     if($_POST){
