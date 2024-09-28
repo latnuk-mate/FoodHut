@@ -13,8 +13,8 @@
     <a href="/" 
        class="fw-semibold fs-5" 
        >SignUp to Continue
-</a>
-    </div>
+    </a>
+</div>
 
 </body>
 </html>

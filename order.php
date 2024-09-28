@@ -1,7 +1,7 @@
 <?php
     session_start();
     if(!isset($_SESSION['username'])){
-        header('Location: ./error.php');
+        header('Location: /partials/error.php');
     }
 
 // parsing the env file...
@@ -26,17 +26,6 @@ $dbName =   $env['DATABASE'];
     $result = mysqli_query($conn, $query);
 
 
-    // creating an associative array of the returned data.
-    // if(mysqli_num_rows($result) > 0){
-    //     while($data = mysqli_fetch_assoc($result)){
-    //         echo "Name: " .$data['product_name'];
-    //     }
-    // }
-    // print_r($data);
-    // echo count($data);
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,7 +42,7 @@ $dbName =   $env['DATABASE'];
 <!-- custom styles... -->
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <!-- icon -->
-<link rel="icon" href="imgs/logo.png" type="image/png" />
+<link rel="icon" href="/imgs/logo.png" type="image/png" />
 </head>
 <body>
 <!-- design the order page... put the order details along with the image.     -->

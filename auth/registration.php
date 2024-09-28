@@ -5,7 +5,7 @@
  session_start();
 
 // parsing the env file...
- $env = parse_ini_file('.env');
+ $env = parse_ini_file('../.env');
 
 // database creadentials....
 $hostname = $env['HOSTNAME'];
@@ -44,7 +44,7 @@ $phone = sanitizeInputs($_POST['phone'], FILTER_VALIDATE_INT);
     if(mysqli_query($conn , $query)){
         mysqli_close($conn);
 
-        header('Location: ./index.php');
+        header('Location: /index.php');
     }
     else{
       die('failed to insert data'.mysqli_error($conn));  

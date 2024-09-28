@@ -3,7 +3,7 @@
      session_start();
 
 // parsing the env file...
-$env = parse_ini_file('.env');
+$env = parse_ini_file('../.env');
 
 // database creadentials....
 $hostname = $env['HOSTNAME'];
@@ -34,7 +34,7 @@ $dbName =   $env['DATABASE'];
             if($data['email'] == $email and $data['password'] == $password){
                 $_SESSION['username'] = $data['name'];
                 mysqli_close($conn);
-                header('Location: ./index.php');
+                header('Location: /index.php');
             }
             else{ echo 'something went wrong!';}
 

@@ -1,10 +1,11 @@
 
 async function getItem(){
-	let data = await fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=");
+	let data = await fetch("./item.json");
 	let item = await data.json();
 	let foodItem = item.meals;
 	return foodItem;
 }
+
 
 async function main() {
 	const food = await getItem()

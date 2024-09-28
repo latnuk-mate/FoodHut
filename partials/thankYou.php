@@ -2,13 +2,13 @@
 session_start();
 
 // this will redirect to the home by default...
-if(!isset($_SESSION['customerName'])){
+if(!isset($_GET['payment_status'])){
     header('Location: ./error.php');
 }
 
 
 // parsing the env file...
-$env = parse_ini_file('.env');
+$env = parse_ini_file('../.env');
 
 // database creadentials....
 $hostname = $env['HOSTNAME'];
@@ -35,12 +35,14 @@ if(!$conn){
     $query = "INSERT INTO ProductData (product_name, product_price, product_count, product_image, product_payment_status)
     VALUES('$productName', '$productPrice' , '$productCount', '$productImage', '$productPayStatus')";
 
-    if(mysqli_query($conn , $query)){
-    mysqli_close($conn);
+    if(isset($_GET['payment_status'])){
+        if(mysqli_query($conn , $query)){
+            mysqli_close($conn);
+       }
+       else{
+       die('failed to insert data'.mysqli_error($conn));  
+       } 
     }
-    else{
-    die('failed to insert data'.mysqli_error($conn));  
-    } 
 
 
 
@@ -53,7 +55,7 @@ if(!$conn){
 <title>Thanking Page!</title>
 <!-- External styling libraries -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="icon" href="imgs/logo.png" type="image/png" />
+<link rel="icon" href="/imgs/logo.png" type="image/png" />
 </head>
 <body>
     <div 
@@ -77,7 +79,7 @@ if(!$conn){
             Back To Home
            </a>
 
-           <a href="./order.php" 
+           <a href="/order.php" 
            class="text-decoration-none text-primary px-5 py-2 bg-primary text-white rounded-pill">
             Check Order
            </a>

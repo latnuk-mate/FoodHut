@@ -32,149 +32,16 @@
 	</div>
 
 	<!-- navbar -->
-	<nav class="navbar navbar-expand-lg custom-nav">
-		<div class="container">
-			<a class="navbar-brand dancing--script" href="/">FoodHut</a>
-		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarList" aria-controls="navbarList" aria-expanded="false" aria-label="Toggle navigation">
-		      <span class="navbar-toggler-icon"></span>
-		    </button>
-		  <div class="collapse navbar-collapse" id="navbarList">
-		  	 <ul class="navbar-nav">
-			        <li class="nav-item">
-			          <a class="nav-link active" aria-current="page" href="#">Home</a>
-			        </li>
-			        <li class="nav-item">
-			          <a class="nav-link" href="./menu.php">Menu</a>
-			        </li>
-			       	<li class="nav-item">
-			          <a class="nav-link" href="#booking">Book A Table</a>
-			        </li>
-			      	<li class="nav-item">
-			          <a class="nav-link" href="#contactPage">Contact</a>
-			        </li>
-		     </ul>
-		     <div class="social--links">
-                <?php 
-                    if(isset($_SESSION['username'])){
-                        echo '<a href="./user.php" class="nav-link">'.$_SESSION['username'].'<i class="fa fa-user ms-1"></i></a>';
-                    }else{
-                        echo '<a href="#" class="nav-link"><i class="fa fa-user"></i></a>';
-                    }
-                
-                ?>
-			<?php
-				if(isset($_SESSION['username'])){
-					echo "<a href='./order.php' class='nav-link'>
-						<i class='fa fa-cart-shopping'></i>
-						</a>";
-				}else{
-					echo '<a href="#" class="nav-link"><i class="fa fa-cart-shopping"></i></a>';
-				}
-			
-			 ?>
-                
-                <?php 
-                    if(isset($_SESSION['username'])){
-                        echo '<a href="./logout.php" class="px-5 py-2 text-decoration-none text-white bg-warning" style="border-radius: 100px">Sign Out</a>';
-                    }else{
-                        echo '<button class="px-5 py-2" data-bs-toggle="modal" data-bs-target="#signUpModal">Sign Up</button>';
-                    }
-                ?>
-                
-		     </div>
-		  </div>
-		</div>
-	</nav>
+	<?php include("partials/navbar.php");  ?>		
 
 	<!-- registration modal section -->
-
-<div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="exampleModalLabel" >
-  <div class="modal-dialog">
-    <div class="modal-content">
-        <h1 class="modal-title dancing--script" id="exampleModalLabel">Create an Account!</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      <div class="modal-body">
-      		<form class="signUpForm" action="./registration.php" method="post" name="signUpForm">
-      			<div class="form-group mb-3">
-      				<input type="text" 
-      				name="username"
-      				class="form-control"
-      				placeholder="Your Name"
-      				required />
-      			</div>
-
-      			<div class="form-group mb-3">
-      				<input type="email" 
-      				name="email"
-      				class="form-control"
-      				placeholder="Your Email"
-      				required />
-      			</div>
-
-      			<div class="form-group mb-3">
-						<input type="text"
-						 name="phone" 
-						 class="form-control"
-						 id="userPhone"
-						 placeholder="Phone Number" 
-						 required 
-						 />
-						 <span id="signup--msg--phone"></span>
-					</div>
-
-      			<div class="form-group mb-4">
-      				<input type="password" 
-      				name="pass"
-      				class="form-control"
-      				id="userPass" 
-      				placeholder="Enter PassWord"
-      				required />
-      			<span id="msg--for--password"></span>
-      			</div>
-        <button type="submit" class="px-5 py-2 modal--btn form-control mb-2">Sign Up</button>
-      		</form>
-
-      		<div class="text-center text-secondary login--toggler">
-      			Have an account? Please
-      			<a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#signInModal"> Sign In</a>
-      		</div>
-      </div>
-    </div>
-  </div>
-</div>
+	<?php include("auth/regForm.html");  ?>		
 
 <!-- login modal section -->
-<div class="modal fade" id="signInModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-    	<div class="modal-title dancing--script" id="exampleModalLabel">Please Log In</div>
-    	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    		<div class="modal-body">
-    				<form class="loginForm" name="loginForm" action="./login.php" method="post">
-    				<div class="form-group mb-3">
-    				<input type="email" 
-      				name="email"
-      				class="form-control"
-      				placeholder="Your Email"
-      				required />
-    				</div>
+	<?php include("auth/loginForm.html");  ?>
 
-    				<div class="form-group mb-4">
-      				<input type="password" 
-      				name="pass"
-      				class="form-control"
-      				id="password" 
-      				placeholder="Enter PassWord"
-      				required />
-      			</div>
 
-      			<button type="submit" class="form-control modal--btn px-5 py-2">Sign In</button>
-    				</form>
-    		</div>
-    </div>
-  </div>
-</div>
-
+<!-- carousel part -->
 
 	<div id="foodHutCarousel" class="carousel slide">
 			<div class="carousel-inner">
@@ -270,7 +137,7 @@
 							<h5 class="menu--title dancing--script">Tasty Pizza</h5>
 							<p class="fst-italic">Experience a taste sensation that's impossible to resist - every bite of our pizza is a flavor explosion!</p>
 							<h5 class="price">&#8377;199<small class="text-white-50"><del>299</del></small></h5>
-							<a href="/item/addtocart" class="px-5 py-2 btn">
+							<a href="./Menu.php" class="px-5 py-2 btn">
 								<i class="fa fa-cart-shopping"></i>
 								Taste It Now
 							</a>
@@ -293,7 +160,7 @@
 							<h5 class="menu--title dancing--script">Spicy Burger</h5>
 							<p class="fst-italic">Indulge in burger bliss with our handcrafted creations, where every bite is a symphony of flavor and texture!</p>
 						<h5 class="price">&#8377;149<small class="text-white-50"><del>249</del></small></h5>
-							<a href="/item/addtocart" class="px-5 py-2 btn cart--btn2">
+							<a href="./Menu.php" class="px-5 py-2 btn cart--btn2">
 								<i class="fa fa-cart-shopping"></i>
 								Grab Your Dish
 							</a>
@@ -454,80 +321,16 @@ Welcome to FoodHut, where fast food meets flavor and convenience! At FoodHut, we
 					</div>
 					</div>
 				</div>	
-
 		</div>
-
-
 		</div>
 				
 	</div>
 </section>
 
 
+<!-- footer section -->
+<?php include("partials/footer.html");  ?>	
 
-<footer class="footer--part" id="contactPage">
-	<div class="container">
-		<div class="row g-5">
-			<div class="col-lg-4">
-				<div class="footer--text--area">
-					<h5 class="footer--title dancing--script">Contact</h5>
-					<div class="mt-2 footer--subtitle">
-							<p><i class="fa fa-home me-1"></i>
-								Kolkata, India, SaltLake
-							</p>
-							<p><i class="fa fa-envelope me-1"></i>
-								foodhut@yahoo.com
-							</p>
-
-							<p><i class="fa fa-phone me-1"></i>
-								+91 009-334-878
-							</p>
-					</div>
-				</div>
-			</div>
-
-
-			<div class="col-lg-4">
-				<div class="footer--text--area">
-				<h5 class="footer--title dancing--script">FoodHut</h5>
-				<p class="footer--subtitle">
-				At FoodHut, savor the symphony of spices in every bite, where each dish tells a tale of culinary delight.
-				</p>
-				<div class="footer--social--links">
-					<a href="">
-						<i class="fab fa-facebook"></i>
-					</a>
-					<a href="">
-						<i class="fab fa-instagram"></i>
-					</a>
-
-					<a href="">
-						<i class="fab fa-twitter"></i>
-					</a>
-					<a href="">
-						<i class="fab fa-linkedin"></i>
-					</a>
-				</div>
-				</div>
-			</div>
-
-			<div class="col-lg-4">
-				<div class="footer--text--area">
-				<h5 class="footer--title dancing--script">Opening Hours</h5>
-				<p class="footer--subtitle">
-				8.00 AM - 8.00 PM
-				</p>
-				</div>
-			</div>
-		</div>
-
-		<div class="footer--tail">
-		<p class=""> &copy; Copyright <span id="year"></span>FoodHut. All rights reserved. Designed & Developed By <a href="https://github.com/latnuk-mate" class="text-decoration-none text-white-50" target="_blank">@latnuk-mate</a>.</p>
-	</div>
-	</div>
-
-	
-</footer>
 
 
 <!-- External Scripts -->
