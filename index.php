@@ -28,11 +28,63 @@
 
 <div class="hero--part">
 	<div class="img--box">
-		<img src="imgs/heroImage.jpg">
+		<img src="imgs/heroBurger.jpg">
 	</div>
 
 	<!-- navbar -->
-	<?php include("partials/navbar.php");  ?>		
+	<nav class="navbar navbar-expand-lg custom-nav">
+		<div class="container">
+			<a class="navbar-brand dancing--script" href="/">FoodHut</a>
+		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarList" aria-controls="navbarList" aria-expanded="false" aria-label="Toggle navigation">
+		      <span class="navbar-toggler-icon"></span>
+		    </button>
+		  <div class="collapse navbar-collapse" id="navbarList">
+		  	 <ul class="navbar-nav">
+			        <li class="nav-item">
+			          <a class="nav-link active" aria-current="page" href="/">Home</a>
+			        </li>
+			        <li class="nav-item">
+			          <a class="nav-link" href="./menu.php">Menu</a>
+			        </li>
+			       	<li class="nav-item">
+			          <a class="nav-link" href="#booking">Book A Table</a>
+			        </li>
+			      	<li class="nav-item">
+			          <a class="nav-link" href="#contactPage">Contact</a>
+			        </li>
+		     </ul>
+		     <div class="social--links">
+                <?php 
+                    if(isset($_SESSION['username'])){
+                        echo '<a href="./user.php" class="nav-link">'.$_SESSION['username'].'<i class="fa fa-user ms-1"></i></a>';
+                    }else{
+                        echo '<a href="#" class="nav-link"><i class="fa fa-user"></i></a>';
+                    }
+                
+                ?>
+			<?php
+				if(isset($_SESSION['username'])){
+					echo "<a href='./order.php' class='nav-link'>
+						<i class='fa fa-cart-shopping'></i>
+						</a>";
+				}else{
+					echo '<a href="#" class="nav-link"><i class="fa fa-cart-shopping"></i></a>';
+				}
+			
+			 ?>
+                
+                <?php 
+                    if(isset($_SESSION['username'])){
+                        echo '<a href="./auth/logout.php" class="px-5 py-2 text-decoration-none text-white bg-warning" style="border-radius: 100px">Sign Out</a>';
+                    }else{
+                        echo '<button class="px-5 py-2" data-bs-toggle="modal" data-bs-target="#signUpModal">Sign Up</button>';
+                    }
+                ?>
+                
+		     </div>
+		  </div>
+		</div>
+	</nav>	
 
 	<!-- registration modal section -->
 	<?php include("auth/regForm.html");  ?>		
@@ -217,16 +269,20 @@ Welcome to FoodHut, where fast food meets flavor and convenience! At FoodHut, we
 <!-- filter dish part is done! -->
 
 <!-- table booking section -->
+
 <section class="booking--table" id="booking">
 	<h5 class="booktable--title dancing--script">Book A Table</h5>
 	<div class="container">
-		<div class="row g-5">
-			<div class="col-lg-6">
-				<form action="booktable.php" name="bookATable" method="post" class="tableForm">
+	<div class="row justify-content-center">
+    <div class="col-lg-12">
+        <div class="form--section p-3">
+       <div class="booking--form p-4 col-lg-6  col-12">
+			<h5 class="dancing--script">Your table is just a form away!</h5>
+                <form action="partials/booktable.php" name="bookATable" method="post" class="tableForm">
 					<div class="form-group mb-2">
 						<label for="customerName">Your Name</label>
 						<input type="text"
-						 name="customerName" 
+						 name="bookedCustomerName" 
 						 class="form-control"
 						 required 
 						 />
@@ -234,7 +290,7 @@ Welcome to FoodHut, where fast food meets flavor and convenience! At FoodHut, we
 					<div class="form-group mb-2">
 						<label for="customerPhone">Phone Number</label>
 						<input type="text"
-						 name="customerPhone" 
+						 name="bookedCustomerPhone" 
 						 class="form-control"
 						 id="customerPhone"
 						 required 
@@ -244,14 +300,14 @@ Welcome to FoodHut, where fast food meets flavor and convenience! At FoodHut, we
 					<div class="form-group mb-2">
 						<label for="customerDate">Book A Date</label>
 						<input type="date"
-						 name="customerDate" 
+						 name="bookedCustomerDate" 
 						 class="form-control"
 						 required 
 						 />
 					</div>
 						<div class="form-group mb-3">
 						<label for="customerDate">Select Table For</label>
-						<select name="customerCount" class="form-control" required>
+						<select name="bookedCustomerCount" class="form-control" required>
 							<option value="">How many Persons?</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
@@ -260,17 +316,15 @@ Welcome to FoodHut, where fast food meets flavor and convenience! At FoodHut, we
 					</div>
 				<button class="px-5 py-2 submit" type="submit">Book Table</button>
 				</form>
-			</div>
+             </div>
 
-			<div class="col-lg-6">
-				<div id="restaurantVideo">
-					<video controls autoplay loop>
-						<source src="imgs/restaurantVideoCom.mp4" type="video/mp4">
-						This Browser does not support Video
-					</video>
-				</div>
-			</div>
-		</div>
+                <div class="img--box d-none d-lg-block">
+                <img src="/imgs/chef.png" alt="" class="">
+               </div>
+            </div>     
+        </div>
+                 
+     </div>
 	</div>
 </section>
 
@@ -320,7 +374,29 @@ Welcome to FoodHut, where fast food meets flavor and convenience! At FoodHut, we
 						<img src="imgs/customer2.jpg" alt="a valuable customer!">
 					</div>
 					</div>
-				</div>	
+				</div>
+
+
+				<div class="item">
+					<div class="testimonial--box">
+						<div class="text--area">
+						<h5 class="testimony--subtitle dancing--script">Marry Holmes</h5>
+						<p>Absolutely delightful experience at this restaurant! From the moment we walked in, we were greeted warmly and seated promptly. The food was exquisite, bursting with flavor and presented beautifully. The service was top-notch, attentive without being overbearing. Will definitely be returning soon!</p>
+
+						<div class="ratings">
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+					 <small>Delicious!</small>
+					</div>
+					</div>
+
+					<div class="img--box">
+						<img src="imgs/customer3.jpg" alt="a valuable customer!">
+					</div>
+					</div>
+				</div>
 		</div>
 		</div>
 				

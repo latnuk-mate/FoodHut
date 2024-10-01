@@ -2,7 +2,7 @@
 session_start();
 
 if(!isset($_SESSION['username'])){
-    header('Location: ./error.php');
+    header('Location: /partials/error.php');
 }
 
 if(isset($_POST['userName'])){

@@ -11,7 +11,7 @@
   padding: 0; }
 
 body {
-  background: #FBF9F1;
+  background: #F1F1F1;
   color: #303841;
   margin: 0;
   padding: 0;
@@ -35,13 +35,13 @@ body {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: top right;
+      object-position: bottom center;
       mix-blend-mode: soft-light;
       z-index: -1; }
   .hero--part .modal .modal-content {
     padding: 1rem;
     border-radius: 8px;
-    background: #FBF9F1;
+    background: #F1F1F1;
     position: relative; }
     .hero--part .modal .modal-content .btn-close {
       position: absolute;
@@ -68,11 +68,11 @@ body {
       border-radius: 2rem;
       border: none;
       background: #FFB72B;
-      color: #FBF9F1; }
+      color: #F1F1F1; }
   .hero--part nav {
     z-index: 10; }
     .hero--part nav .navbar-brand {
-      color: #FBF9F1;
+      color: #F1F1F1;
       font-size: 40px; }
     .hero--part nav .navbar-toggler {
       outline: none !important;
@@ -80,7 +80,7 @@ body {
       border: none; }
       .hero--part nav .navbar-toggler .navbar-toggler-icon {
         background-image: none !important;
-        background-color: #FBF9F1;
+        background-color: #F1F1F1;
         height: 3px;
         width: 25px;
         margin: 10px 0;
@@ -89,7 +89,7 @@ body {
         transform-origin: center; }
         .hero--part nav .navbar-toggler .navbar-toggler-icon::before {
           display: block;
-          background-color: #FBF9F1;
+          background-color: #F1F1F1;
           height: 3px;
           content: "";
           position: relative;
@@ -98,7 +98,7 @@ body {
           transform-origin: center; }
         .hero--part nav .navbar-toggler .navbar-toggler-icon::after {
           display: block;
-          background-color: #FBF9F1;
+          background-color: #F1F1F1;
           height: 3px;
           content: "";
           position: relative;
@@ -118,7 +118,7 @@ body {
         padding: 7px 24px;
         font-size: 18px; }
         .hero--part nav ul .nav-item .nav-link {
-          color: #FBF9F1; }
+          color: #F1F1F1; }
           .hero--part nav ul .nav-item .nav-link:hover {
             color: #FFB72B; }
           .hero--part nav ul .nav-item .nav-link.active {
@@ -129,7 +129,7 @@ body {
       align-items: center;
       gap: 20px; }
       .hero--part nav .social--links .nav-link {
-        color: #FBF9F1;
+        color: #F1F1F1;
         font-size: 18px; }
         .hero--part nav .social--links .nav-link:hover {
           color: #FFB72B; }
@@ -137,11 +137,11 @@ body {
         border-radius: 2rem;
         border: none;
         background: #FFB72B;
-        color: #FBF9F1; }
+        color: #F1F1F1; }
   .hero--part #foodHutCarousel {
     padding-top: 5rem;
     padding-bottom: 2rem;
-    color: #FBF9F1;
+    color: #F1F1F1;
     position: relative; }
     .hero--part #foodHutCarousel .carousel--title {
       font-size: 40px;
@@ -161,7 +161,7 @@ body {
         border-radius: 2rem;
         border: none;
         background: #FFB72B;
-        color: #FBF9F1;
+        color: #F1F1F1;
         text-decoration: none; }
     .hero--part #foodHutCarousel ol.carousel-indicators {
       position: absolute;
@@ -210,7 +210,7 @@ body {
       .food--menu .menu--content .img--box:hover img {
         transform: scale(1.1); }
     .food--menu .menu--content .text--area {
-      color: #FBF9F1; }
+      color: #F1F1F1; }
       .food--menu .menu--content .text--area .menu--title {
         font-size: 30px;
         margin-bottom: 5px; }
@@ -231,7 +231,7 @@ body {
           border-radius: 2rem;
           border: none;
           background: #FFB72B;
-          color: #FBF9F1; }
+          color: #F1F1F1; }
         .food--menu .menu--content .text--area a i {
           margin-right: 8px; }
 
@@ -245,7 +245,7 @@ body {
     font-weight: bold; }
   .about--section .about--field {
     background: #303841;
-    color: #FBF9F1;
+    color: #F1F1F1;
     margin-top: 2rem;
     padding: 1.5rem; }
     .about--section .about--field .row {
@@ -291,13 +291,13 @@ body {
       border-radius: 100px; }
       .filtered--dishes .filter--menu li.active {
         background: #303841;
-        color: #FBF9F1; }
+        color: #F1F1F1; }
   .filtered--dishes .all {
     margin-bottom: 2rem; }
   .filtered--dishes .filter--box {
     background: #3A4750;
     border-radius: 10px;
-    color: #FBF9F1;
+    color: #F1F1F1;
     overflow: hidden;
     transition: all .4s ease-in-out; }
     .filtered--dishes .filter--box:hover {
@@ -337,7 +337,7 @@ body {
           border-radius: 2rem;
           border: none;
           background: #FFB72B;
-          color: #FBF9F1; }
+          color: #F1F1F1; }
 
 .booking--table {
   margin-top: 2rem;
@@ -347,24 +347,46 @@ body {
     font-size: 40px;
     margin-bottom: 1.8rem;
     font-weight: 600; }
-  .booking--table form .form-control {
-    border-radius: 10px;
-    border: 1px solid #303841; }
-    .booking--table form .form-control:focus {
-      outline: none;
-      box-shadow: none; }
-  .booking--table form #msgForPhone {
-    color: darkred; }
-  .booking--table form button {
-    border-radius: 2rem;
-    border: none;
-    background: #FFB72B;
-    color: #FBF9F1;
-    border-radius: 100px; }
-  .booking--table #restaurantVideo video {
-    height: 100%;
-    width: 100%;
-    border-radius: 18px; }
+  .booking--table .form--section {
+    display: flex;
+    background-image: url("../imgs/bookwallpaper.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-blend-mode: multiply;
+    background-color: #303841;
+    color: #F1F1F1;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px; }
+    .booking--table .form--section .booking--form {
+      background-color: #F1F1F1;
+      color: #303841;
+      border-radius: 12px; }
+      .booking--table .form--section .booking--form h5 {
+        font-size: 30px;
+        margin-bottom: 16px;
+        text-align: center; }
+      .booking--table .form--section .booking--form form .form-control {
+        border-radius: 10px;
+        border: 1px solid #303841; }
+        .booking--table .form--section .booking--form form .form-control:focus {
+          outline: none;
+          box-shadow: none; }
+      .booking--table .form--section .booking--form form #msgForPhone {
+        color: darkred; }
+      .booking--table .form--section .booking--form form button {
+        border-radius: 2rem;
+        border: none;
+        background: #FFB72B;
+        color: #F1F1F1;
+        border-radius: 100px; }
+    .booking--table .form--section .img--box {
+      margin-bottom: -16px; }
+      .booking--table .form--section .img--box img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: right; }
 
 .testimony {
   padding-top: 4rem;
@@ -380,7 +402,7 @@ body {
       background: #303841;
       padding: 16px;
       border-radius: 8px;
-      color: #FBF9F1;
+      color: #F1F1F1;
       margin-bottom: 2rem; }
       .testimony .client--carousel .testimonial--box .text--area .testimony--subtitle {
         font-size: 30px;
@@ -422,7 +444,7 @@ body {
     margin-top: 1rem; }
     .testimony .client--carousel .owl-nav .owl-prev, .testimony .client--carousel .owl-nav .owl-next {
       background: #FFB72B;
-      color: #FBF9F1;
+      color: #F1F1F1;
       height: 40px;
       width: 40px;
       border-radius: 50%; }
@@ -435,7 +457,7 @@ body {
   .footer--part.sticky--footer {
     margin-top: calc(40vh - 100px); }
   .footer--part .footer--text--area {
-    color: #FBF9F1; }
+    color: #F1F1F1; }
     .footer--part .footer--text--area .footer--title {
       margin-bottom: 10px;
       font-size: 30px; }
@@ -462,7 +484,7 @@ body {
         text-decoration: none;
         border-radius: 50%; }
   .footer--part .footer--tail {
-    color: #FBF9F1;
+    color: #F1F1F1;
     text-align: center;
     margin-top: 3rem; }
     .footer--part .footer--tail p {
@@ -494,7 +516,7 @@ body {
       padding: 14px;
       margin-bottom: 1rem;
       text-align: center;
-      color: #FBF9F1; }
+      color: #F1F1F1; }
       .menu--area .card .text--field .food--name {
         font-size: 40px;
         margin-bottom: 10px; }
@@ -529,14 +551,14 @@ body {
       border-radius: 2rem;
       border: none;
       background: #FFB72B;
-      color: #FBF9F1;
+      color: #F1F1F1;
       color: #303841;
       width: 100%; }
 
 .orderPageForUser .action--btn {
   text-decoration: none;
   background-color: #3A4750;
-  color: #FBF9F1;
+  color: #F1F1F1;
   font-size: 18px;
   border-radius: 200px; }
 
