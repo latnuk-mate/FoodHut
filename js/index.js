@@ -1,5 +1,11 @@
 $(window).on( 'load' , function(){
 
+	// hide the preloader after certain time span
+	setTimeout(() => {
+		$(".preloader").css("display", 'none');
+	}, 600);	
+
+	
 	$('.navbar-nav .nav-item .nav-link').click(function(){
 		$('.navbar-nav .nav-item .nav-link').removeClass('active');
 		$(this).addClass('active');

@@ -34,7 +34,7 @@ $dbName =   $env['DATABASE'];
             if($data['email'] == $email and $data['password'] == $password){
                 $_SESSION['username'] = $data['name'];
                 mysqli_close($conn);
-                header('Location: /index.php');
+                header('Location: /');
             }
             else{ echo 'something went wrong!';}
 

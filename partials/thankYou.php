@@ -1,52 +1,13 @@
 <?php 
 session_start();
 
-// this will redirect to the home by default...
-if(!isset($_GET['payment_status'])){
-    header('Location: ./error.php');
+if(!isset($_SESSION['status'])){
+    header("Location: /partials/error.php");
+}else{
+    unset($_SESSION["status"]);
 }
-
-
-// parsing the env file...
-$env = parse_ini_file('../.env');
-
-// database creadentials....
-$hostname = $env['HOSTNAME'];
-$username = $env['USERNAME'];
-$password = $env['PASSWORD'];
-$dbName =   $env['DATABASE'];
-
-//  connect the database...
-$conn = mysqli_connect($hostname, $username, $password, $dbName);
-
-if(!$conn){
-    die('connection failed'.mysqli_connect_error());
-}
-
-// get all the necessary values...
-    $productName = $_SESSION['productName'];
-    $productPrice = $_SESSION['productPrice'];
-    $productCount = $_SESSION['productCount'];
-    $productImage = $_SESSION['productImage'];
-    $productPayStatus = $_GET['payment_status'];
-
-
-// insert the values into the database.
-    $query = "INSERT INTO ProductData (product_name, product_price, product_count, product_image, product_payment_status)
-    VALUES('$productName', '$productPrice' , '$productCount', '$productImage', '$productPayStatus')";
-
-    if(isset($_GET['payment_status'])){
-        if(mysqli_query($conn , $query)){
-            mysqli_close($conn);
-       }
-       else{
-       die('failed to insert data'.mysqli_error($conn));  
-       } 
-    }
-
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,7 +40,7 @@ if(!$conn){
             Back To Home
            </a>
 
-           <a href="/order.php" 
+           <a href="../user/order.php" 
            class="text-decoration-none text-primary px-5 py-2 bg-primary text-white rounded-pill">
             Check Order
            </a>

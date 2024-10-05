@@ -464,6 +464,7 @@ body{
 
 	.all{
 		margin-bottom: 2rem;
+		transition: display 2s ease-in-out;
 	}
 
 	.filter--box{
@@ -558,6 +559,7 @@ body{
 			background-color: $body-color;
 			color: $primary-color;
 			border-radius: 12px;
+			margin-left: 20px;
 
 			h5{
 				font-size: $large--text;
@@ -870,18 +872,30 @@ body{
 
 
 .orderPageForUser{
+
+	&.bg--gray{
+		background-color: $primary-color;
+	}
+
+	.shadow-lg{
+		background-color: $secondary-color;
+		border-radius: 12px;
+	}
 	
 	.action--btn{
 		text-decoration: none;
-		background-color: $secondary-color;
-		color: $body-color;
+		background-color: $body-color;
+		color: $primary-color;
 		font-size: $medium--text;
 		border-radius: 200px;
 	}
 
 	h5{
-		font-size: $large--text;
+		font-size: $title--text;
 		color: $element-color;
+		text-align: center;
+		font-weight: 600;
+		margin-top: 20px;
 	}
 	
 	.img--area{
@@ -905,11 +919,123 @@ body{
 	}
 
 	.text--area{
-		margin-left: 10px;
+		// margin-left: 10px;
 
 		h5{
 			font-size: $medium--text;
+			font-weight: 500;
 		}
+	}
+}
+
+.settings--modal{
+	background-color: $secondary-color;
+	color: $body-color;
+	position: relative;
+	border-radius: 15px;
+
+	h5{
+		font-size: $title--text;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 15px;
+		font-weight: 600;
+
+	}
+
+	button{
+		position: absolute;
+		top: 5px;
+		right: 5px;
+		background-color: $body-color;
+	}
+
+	.profile--links{
+		font-size: $medium--text;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 10px;
+		text-decoration: none;
+		color: $body-color;
+		margin-bottom: 20px;
+
+		&:hover{
+			color: $element-color;
+		}
+	}
+}
+
+.preloader{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	position: absolute;
+	background-color: $secondary-color;	
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 99999;
+
+	.loader--img{
+		width: 90px;
+		height: 90px;
+		border-radius: 50%;
+		border: 4px solid $element-color;
+		background-color: $primary-color;
+		animation: spin .6s infinite;
+		transition: all .5s ease-in-out;
+
+		img{
+			width: 100%;
+			object-fit: scale-down;
+		}
+
+	}
+
+	// .loader{
+	// 	width: 24px;
+	// 	height: 24px;
+	// 	background-color: $element-color;
+	// 	border-radius: 50%;
+	// 	animation: loading .4s infinite;
+	// 	transition: all .4s ease-in-out;
+	// 	z-index: 9999999;
+	// 	position: relative;
+
+	// 	&:nth-child(1){
+	// 		animation-delay: 0s;
+	// 	}
+
+	// 	&:nth-child(2){
+	// 		animation-delay: 0.2s;
+	// 	}
+
+	// 	&:nth-child(3){
+	// 		animation-delay: 0.4s;
+	// 	}
+	// }
+}
+
+
+// @keyframes loading{
+//     0% {
+//         transform: translateY(0);
+//     }
+//     100% {
+//         transform: translateY(-20px); /* Bounce height */
+//     }
+// }
+
+@keyframes spin{
+	0%{
+		transform: rotate(0deg);
+	}
+	100%{
+		transform: rotate(360deg);
 	}
 }
 

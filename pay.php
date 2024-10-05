@@ -1,9 +1,6 @@
 <?php
 session_start();
 
-
-// getting auth details...
-
 // parsing the env file...
 $env = parse_ini_file('.env');
 
@@ -25,7 +22,7 @@ $payload = Array(
     'amount' => $_SESSION['productPrice'],
     'phone' => $_SESSION['customerNumber'] ,
     'buyer_name' => $_SESSION['customerName'],
-    'redirect_url' => 'http://localhost:5000/partials/thankYou.php',
+    'redirect_url' => 'http://localhost:5000/partials/store.php',
     'send_email' => true,
     // 'webhook' => 'http://localhost:5000/thankYou.php',
     'send_sms' => true,
@@ -40,7 +37,7 @@ if(curl_errno($ch)) {
     echo 'Curl error: ' . curl_error($ch);
 }
 curl_close($ch);
-// print_r($response);
+
 $res = json_decode($response, true);
 
 $url = $res['payment_request']['longurl'];

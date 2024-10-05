@@ -10,7 +10,7 @@ $username = $env['USERNAME'];
 $password = $env['PASSWORD'];
 $dbName =   $env['DATABASE'];
 
-if(isset($_POST['bookedCustomerName']) and isset($_SESSION['username'])){
+if($_SERVER['REQUEST_METHOD'] === 'POST' and isset($_SESSION['username'])){
 
     // data created...
     $name = $_POST['bookedCustomerName'];

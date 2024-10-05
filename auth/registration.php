@@ -44,7 +44,7 @@ $phone = sanitizeInputs($_POST['phone'], FILTER_VALIDATE_INT);
     if(mysqli_query($conn , $query)){
         mysqli_close($conn);
 
-        header('Location: /index.php');
+        header('Location: /');
     }
     else{
       die('failed to insert data'.mysqli_error($conn));  

@@ -5,8 +5,11 @@ The application to order your favorite food.
 <!-- Todos -->
 
 <!-- 
-fix the order page data using sql
-update image in the hero image section
+create a preloader effect
+color of the website
 
+
+cofirm table section...
+setting page fix
 
  -->

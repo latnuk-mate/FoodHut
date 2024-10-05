@@ -18,14 +18,29 @@
 <!-- carousel library -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+<!-- animation scroll -->
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="icon" href="imgs/logo.png" type="image/png" />
 </head>
-<body>
+<body class="position-relative">
 
+<!-- preloader -->
+ <div class="preloader">
+	<div class="loader--img">
+		<img src="imgs/logo.png" alt="logo">
+	</div>
+
+	<div class="loader"></div>
+	<div class="loader"></div>
+	<div class="loader"></div>
+ </div>
+
+		<!-- settings page modal --> 
+		<?php include("partials/settings.php"); ?>
 
 <!-- let's design the navbar and the hero section -->
-
 <div class="hero--part">
 	<div class="img--box">
 		<img src="imgs/heroBurger.jpg">
@@ -56,7 +71,7 @@
 		     <div class="social--links">
                 <?php 
                     if(isset($_SESSION['username'])){
-                        echo '<a href="./user.php" class="nav-link">'.$_SESSION['username'].'<i class="fa fa-user ms-1"></i></a>';
+                        echo '<a href="#" title="Profile" class="nav-link" data-bs-toggle="modal" data-bs-target="#settingModal">'.$_SESSION['username'].'<i class="fa fa-user ms-1"></i></a>';
                     }else{
                         echo '<a href="#" class="nav-link"><i class="fa fa-user"></i></a>';
                     }
@@ -64,7 +79,7 @@
                 ?>
 			<?php
 				if(isset($_SESSION['username'])){
-					echo "<a href='./order.php' class='nav-link'>
+					echo "<a href='user/cart.php' class='nav-link'>
 						<i class='fa fa-cart-shopping'></i>
 						</a>";
 				}else{
@@ -175,7 +190,7 @@
 <section class="food--menu">
 	<div class="container">
 		<h5 class="title dancing--script">Explore Dishes</h5>
-		<div class="row g-5">
+		<div class="row g-5" data-aos="fade-up">
 			<div class="col-lg-6">
 				<div class="menu--content">
 					<div class="row g-5">
@@ -261,7 +276,7 @@ Welcome to FoodHut, where fast food meets flavor and convenience! At FoodHut, we
 		<li data-filter = "fries">Fries</li>
 	</ul>
 	<div class="container">
-		<div class="row pt-4 food--content">
+		<div class="row pt-4 food--content" data-aos="fade-up">
 			<!-- dynamic contents go here... -->
 		</div>
 	</div>
@@ -276,9 +291,9 @@ Welcome to FoodHut, where fast food meets flavor and convenience! At FoodHut, we
 	<div class="row justify-content-center">
     <div class="col-lg-12">
         <div class="form--section p-3">
-       <div class="booking--form p-4 col-lg-6  col-12">
+       <div class="booking--form p-4 col-lg-6 col-12">
 			<h5 class="dancing--script">Your table is just a form away!</h5>
-                <form action="partials/booktable.php" name="bookATable" method="post" class="tableForm">
+                <form action="user/booktable.php" name="bookATable" method="post" class="tableForm">
 					<div class="form-group mb-2">
 						<label for="customerName">Your Name</label>
 						<input type="text"
@@ -418,6 +433,14 @@ Welcome to FoodHut, where fast food meets flavor and convenience! At FoodHut, we
 
 <script type="text/javascript" src="js/index.js"></script>
 
+<!-- setting up the animation... -->
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+		delay: 30,
+		easing: "ease-in-out"
+	});
+  </script>
 
 </body>
 </html>

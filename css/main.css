@@ -293,7 +293,8 @@ body {
         background: #303841;
         color: #F1F1F1; }
   .filtered--dishes .all {
-    margin-bottom: 2rem; }
+    margin-bottom: 2rem;
+    transition: display 2s ease-in-out; }
   .filtered--dishes .filter--box {
     background: #3A4750;
     border-radius: 10px;
@@ -361,7 +362,8 @@ body {
     .booking--table .form--section .booking--form {
       background-color: #F1F1F1;
       color: #303841;
-      border-radius: 12px; }
+      border-radius: 12px;
+      margin-left: 20px; }
       .booking--table .form--section .booking--form h5 {
         font-size: 30px;
         margin-bottom: 16px;
@@ -555,16 +557,26 @@ body {
       color: #303841;
       width: 100%; }
 
+.orderPageForUser.bg--gray {
+  background-color: #303841; }
+
+.orderPageForUser .shadow-lg {
+  background-color: #3A4750;
+  border-radius: 12px; }
+
 .orderPageForUser .action--btn {
   text-decoration: none;
-  background-color: #3A4750;
-  color: #F1F1F1;
+  background-color: #F1F1F1;
+  color: #303841;
   font-size: 18px;
   border-radius: 200px; }
 
 .orderPageForUser h5 {
-  font-size: 30px;
-  color: #FFB72B; }
+  font-size: 40px;
+  color: #FFB72B;
+  text-align: center;
+  font-weight: 600;
+  margin-top: 20px; }
 
 .orderPageForUser .img--area {
   padding: 10px;
@@ -579,7 +591,65 @@ body {
     .orderPageForUser .img--area img:hover {
       transform: scale(0.9); }
 
-.orderPageForUser .text--area {
-  margin-left: 10px; }
-  .orderPageForUser .text--area h5 {
-    font-size: 18px; }
+.orderPageForUser .text--area h5 {
+  font-size: 18px;
+  font-weight: 500; }
+
+.settings--modal {
+  background-color: #3A4750;
+  color: #F1F1F1;
+  position: relative;
+  border-radius: 15px; }
+  .settings--modal h5 {
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    font-weight: 600; }
+  .settings--modal button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #F1F1F1; }
+  .settings--modal .profile--links {
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #F1F1F1;
+    margin-bottom: 20px; }
+    .settings--modal .profile--links:hover {
+      color: #FFB72B; }
+
+.preloader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: absolute;
+  background-color: #3A4750;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99999; }
+  .preloader .loader--img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 4px solid #FFB72B;
+    background-color: #303841;
+    animation: spin .6s infinite;
+    transition: all .5s ease-in-out; }
+    .preloader .loader--img img {
+      width: 100%;
+      object-fit: scale-down; }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
