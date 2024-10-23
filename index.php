@@ -190,8 +190,8 @@
 <section class="food--menu">
 	<div class="container">
 		<h5 class="title dancing--script">Explore Dishes</h5>
-		<div class="row g-5" data-aos="fade-up">
-			<div class="col-lg-6">
+		<div class="row g-5">
+			<div class="col-lg-6" data-aos="fade-right">
 				<div class="menu--content">
 					<div class="row g-5">
 						<div class="col-sm-4">
@@ -214,7 +214,7 @@
 				</div>
 			</div>
 
-				<div class="col-lg-6">
+				<div class="col-lg-6" data-aos="fade-left">
 				<div class="menu--content">
 					<div class="row g-5">
 						<div class="col-sm-4">
@@ -291,7 +291,15 @@ Welcome to FoodHut, where fast food meets flavor and convenience! At FoodHut, we
 	<div class="row justify-content-center">
     <div class="col-lg-12">
         <div class="form--section p-3">
-       <div class="booking--form p-4 col-lg-6 col-12">
+			<div class="video--bg--shadow">
+					<video playsinline autoplay muted loop poster="/imgs/bookwallpaper.jpg" preload="metadata">
+				<source src="/imgs/video3.mp4" type="video/mp4">
+					The Browser does not support video.
+			</video>
+			</div>
+	
+
+       <div class="booking--form p-4 col-lg-6 col-12 mx-lg-4">
 			<h5 class="dancing--script">Your table is just a form away!</h5>
                 <form action="user/booktable.php" name="bookATable" method="post" class="tableForm">
 					<div class="form-group mb-2">

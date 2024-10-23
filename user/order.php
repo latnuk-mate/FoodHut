@@ -25,6 +25,11 @@ $dbName =   $env['DATABASE'];
 
     $result = mysqli_query($conn, $query);
 
+    if($result){
+        // close connection...
+        mysqli_close($conn);
+    }
+
 
 ?>
 <!DOCTYPE html>

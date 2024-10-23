@@ -1,16 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
 
 $primary-color : #303841;
 $secondary-color: #3A4750;
 $element-color : #FFB72B;
-// $element-color : #FFB100;
-// $body-color : #FBF9F1;
 $body-color: #F1F1F1;
 
 $title--text : 40px;
 $large--text : 30px;
 $medium--text: 18px;
 
+
+::selection{
+	background-color: $element-color;
+	color: $body-color;
+}
 
 @mixin defaultBtn{
 	border-radius: 2rem;
@@ -31,6 +36,13 @@ $medium--text: 18px;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+}
+
+.roboto--mono{
+	font-family: "Roboto Mono", monospace;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
 }
 
 *{
@@ -543,9 +555,11 @@ body{
 		font-weight: 600;
 	}
 
+
+
 	.form--section{
 		display: flex;
-		background-image: url("../imgs/bookwallpaper.jpg");
+		// background-image: url("../imgs/bookwallpaper.jpg");
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position: center center;
@@ -554,12 +568,31 @@ body{
 		color: $body-color;
 		border-top-right-radius: 25px;
 		border-bottom-left-radius: 25px;
+		position: relative;
+		overflow: hidden;
+		z-index: 9999;
+
+		.video--bg--shadow{
+			background-color: $primary-color;
+			mix-blend-mode: multiply ;
+			z-index: -1;
+			opacity: 0.7;
+
+		}
+
+
+			video{
+			width: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+	
+		}
 
 		.booking--form{
 			background-color: $body-color;
 			color: $primary-color;
 			border-radius: 12px;
-			margin-left: 20px;
 
 			h5{
 				font-size: $large--text;
@@ -919,7 +952,6 @@ body{
 	}
 
 	.text--area{
-		// margin-left: 10px;
 
 		h5{
 			font-size: $medium--text;
@@ -996,39 +1028,8 @@ body{
 
 	}
 
-	// .loader{
-	// 	width: 24px;
-	// 	height: 24px;
-	// 	background-color: $element-color;
-	// 	border-radius: 50%;
-	// 	animation: loading .4s infinite;
-	// 	transition: all .4s ease-in-out;
-	// 	z-index: 9999999;
-	// 	position: relative;
-
-	// 	&:nth-child(1){
-	// 		animation-delay: 0s;
-	// 	}
-
-	// 	&:nth-child(2){
-	// 		animation-delay: 0.2s;
-	// 	}
-
-	// 	&:nth-child(3){
-	// 		animation-delay: 0.4s;
-	// 	}
-	// }
 }
 
-
-// @keyframes loading{
-//     0% {
-//         transform: translateY(0);
-//     }
-//     100% {
-//         transform: translateY(-20px); /* Bounce height */
-//     }
-// }
 
 @keyframes spin{
 	0%{
@@ -1037,6 +1038,162 @@ body{
 	100%{
 		transform: rotate(360deg);
 	}
+}
+
+
+.booking--area{
+	background-color: $primary-color;
+	color: $element-color;
+	min-height: 100vh;
+	padding-top: 4rem;
+
+	.booking--title{
+		text-align: center;
+		margin-bottom: 1rem;
+		font-size: $title--text;
+		text-transform: capitalize;
+	}
+
+
+	.row{
+		padding-top: 1rem;
+
+		.info--area{
+			background-color: $secondary-color;
+			padding: 18px;
+			border-radius: 8px 0 8px 0;
+			color: $body-color;
+
+			.text{
+				margin-bottom: 20px;
+			}
+
+			h5{
+				font-size:$medium--text;
+				font-weight: 300;
+			}
+
+			a{
+				text-decoration: none;
+				margin-bottom: 20px;
+				font-size: $medium--text;
+				font-weight: 400;
+
+			&.cancel--btn{
+				@include defaultBtn;
+			}
+			
+		}
+		
+		}
+	}
+}
+
+
+.UserProfile{
+	min-height: 100vh;
+	background-color: $primary-color;
+	padding-top: 4rem;
+	color: $body-color;
+
+	.row{
+			justify-content: center;
+		}
+
+
+		.profile--area{
+			display: flex;
+			background-color: $body-color;
+		
+
+			.left--side--profile{
+				min-height: 400px;
+				min-width: 250px;
+				padding: 14px 16px;
+				background-color: $secondary-color;
+				border-radius: 0 200px 200px 0;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+
+
+				.username{
+					font-size: $title--text;
+				}
+			}
+
+
+
+			.right--side--profile{
+				min-height: 400px;
+				min-width: 450px;
+				background-color: $body-color;
+				padding: 14px 16px;
+				color: $primary-color;
+				text-align: center;
+
+				.form--field{
+					display: none;
+					text-align: start;
+
+					h5{
+						text-align: center;
+					}
+				}
+
+
+				h5{
+					font-size: $large--text;
+					margin-top: 10px;
+					margin-bottom: 20px;
+				}
+
+				.user--info{
+					margin-bottom: 10px;
+
+					p{
+						margin-bottom: 5px;
+						font-size: $medium--text;
+					}
+				}
+
+				.booking--info,
+				.order--info{
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					gap: 10px;
+
+					.title{
+						font-size: 20px;
+						font-weight: 600;
+					}
+				}
+
+				.action--area{
+					display: flex;
+					align-items: center;
+					gap: 20px;
+
+					.update--btn{
+						@include defaultBtn;
+					}
+				}
+
+				.form--action{
+					display: flex;
+					gap: 30px;
+					justify-content: center;
+					align-items: center;
+
+					.form--submit{
+						@include defaultBtn;
+					}
+				}
+
+			}
+		}
+
 }
 
 

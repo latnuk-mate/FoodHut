@@ -1,6 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+::selection {
+  background-color: #FFB72B;
+  color: #F1F1F1; }
+
 .dancing--script {
   font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal; }
+
+.roboto--mono {
+  font-family: "Roboto Mono", monospace;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal; }
@@ -350,7 +361,6 @@ body {
     font-weight: 600; }
   .booking--table .form--section {
     display: flex;
-    background-image: url("../imgs/bookwallpaper.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -358,12 +368,24 @@ body {
     background-color: #303841;
     color: #F1F1F1;
     border-top-right-radius: 25px;
-    border-bottom-left-radius: 25px; }
+    border-bottom-left-radius: 25px;
+    position: relative;
+    overflow: hidden;
+    z-index: 9999; }
+    .booking--table .form--section .video--bg--shadow {
+      background-color: #303841;
+      mix-blend-mode: multiply;
+      z-index: -1;
+      opacity: 0.7; }
+    .booking--table .form--section video {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0; }
     .booking--table .form--section .booking--form {
       background-color: #F1F1F1;
       color: #303841;
-      border-radius: 12px;
-      margin-left: 20px; }
+      border-radius: 12px; }
       .booking--table .form--section .booking--form h5 {
         font-size: 30px;
         margin-bottom: 16px;
@@ -653,3 +675,108 @@ body {
     transform: rotate(0deg); }
   100% {
     transform: rotate(360deg); } }
+
+.booking--area {
+  background-color: #303841;
+  color: #FFB72B;
+  min-height: 100vh;
+  padding-top: 4rem; }
+  .booking--area .booking--title {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 40px;
+    text-transform: capitalize; }
+  .booking--area .row {
+    padding-top: 1rem; }
+    .booking--area .row .info--area {
+      background-color: #3A4750;
+      padding: 18px;
+      border-radius: 8px 0 8px 0;
+      color: #F1F1F1; }
+      .booking--area .row .info--area .text {
+        margin-bottom: 20px; }
+      .booking--area .row .info--area h5 {
+        font-size: 18px;
+        font-weight: 300; }
+      .booking--area .row .info--area a {
+        text-decoration: none;
+        margin-bottom: 20px;
+        font-size: 18px;
+        font-weight: 400; }
+        .booking--area .row .info--area a.cancel--btn {
+          border-radius: 2rem;
+          border: none;
+          background: #FFB72B;
+          color: #F1F1F1; }
+
+.UserProfile {
+  min-height: 100vh;
+  background-color: #303841;
+  padding-top: 4rem;
+  color: #F1F1F1; }
+  .UserProfile .row {
+    justify-content: center; }
+  .UserProfile .profile--area {
+    display: flex;
+    background-color: #F1F1F1; }
+    .UserProfile .profile--area .left--side--profile {
+      min-height: 400px;
+      min-width: 250px;
+      padding: 14px 16px;
+      background-color: #3A4750;
+      border-radius: 0 200px 200px 0;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; }
+      .UserProfile .profile--area .left--side--profile .username {
+        font-size: 40px; }
+    .UserProfile .profile--area .right--side--profile {
+      min-height: 400px;
+      min-width: 450px;
+      background-color: #F1F1F1;
+      padding: 14px 16px;
+      color: #303841;
+      text-align: center; }
+      .UserProfile .profile--area .right--side--profile .form--field {
+        display: none;
+        text-align: start; }
+        .UserProfile .profile--area .right--side--profile .form--field h5 {
+          text-align: center; }
+      .UserProfile .profile--area .right--side--profile h5 {
+        font-size: 30px;
+        margin-top: 10px;
+        margin-bottom: 20px; }
+      .UserProfile .profile--area .right--side--profile .user--info {
+        margin-bottom: 10px; }
+        .UserProfile .profile--area .right--side--profile .user--info p {
+          margin-bottom: 5px;
+          font-size: 18px; }
+      .UserProfile .profile--area .right--side--profile .booking--info,
+      .UserProfile .profile--area .right--side--profile .order--info {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px; }
+        .UserProfile .profile--area .right--side--profile .booking--info .title,
+        .UserProfile .profile--area .right--side--profile .order--info .title {
+          font-size: 20px;
+          font-weight: 600; }
+      .UserProfile .profile--area .right--side--profile .action--area {
+        display: flex;
+        align-items: center;
+        gap: 20px; }
+        .UserProfile .profile--area .right--side--profile .action--area .update--btn {
+          border-radius: 2rem;
+          border: none;
+          background: #FFB72B;
+          color: #F1F1F1; }
+      .UserProfile .profile--area .right--side--profile .form--action {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        align-items: center; }
+        .UserProfile .profile--area .right--side--profile .form--action .form--submit {
+          border-radius: 2rem;
+          border: none;
+          background: #FFB72B;
+          color: #F1F1F1; }

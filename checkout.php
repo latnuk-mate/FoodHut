@@ -44,6 +44,9 @@ header('Location: ./pay.php');
 </head>
 <body>
 
+	<!-- settings page modal --> 
+	<?php include("partials/settings.php"); ?>
+
   <!-- let's design the navbar and the hero section -->
 <div class="hero--part menu--part">
 <!-- navbar -->

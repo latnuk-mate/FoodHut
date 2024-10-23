@@ -38,7 +38,7 @@ if(mysqli_query($conn , $query)){
 mysqli_close($conn);
 
 // on successfull response redirects to ....
-header('Location: /partials/tableConfirm.php');
+header('Location: /user/bookings.php');
 }
 else{
 die('failed to insert data'.mysqli_error($conn));  

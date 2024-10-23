@@ -22,7 +22,7 @@
 		     <div class="social--links">
                 <?php 
                     if(isset($_SESSION['username'])){
-                        echo '<a href="./user.php" class="nav-link">'.$_SESSION['username'].'<i class="fa fa-user ms-1"></i></a>';
+                        echo '<a href="#" title="Profile" class="nav-link" data-bs-toggle="modal" data-bs-target="#settingModal">'.$_SESSION['username'].'<i class="fa fa-user ms-1"></i></a>';
                     }else{
                         echo '<a href="#" class="nav-link"><i class="fa fa-user"></i></a>';
                     }

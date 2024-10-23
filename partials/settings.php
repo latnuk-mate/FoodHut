@@ -26,7 +26,7 @@
                 <i class="fa-solid fa-box"></i>
              </a>
 
-             <a href="user/booking.php" class="profile--links">
+             <a href="user/bookings.php" class="profile--links">
                     My Booking
                 <i class="fa-solid fa-calendar"></i>
              </a>
