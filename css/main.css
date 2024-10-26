@@ -780,3 +780,43 @@ body {
           border: none;
           background: #FFB72B;
           color: #F1F1F1; }
+
+.toast--container {
+  z-index: 9999; }
+  .toast--container .toast--message {
+    position: relative;
+    background-color: #3A4750;
+    color: #F1F1F1;
+    border-radius: 10px;
+    text-align: center;
+    padding: 8px 10px; }
+    .toast--container .toast--message .close--btn {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      color: #F1F1F1 !important; }
+
+.consentPage {
+  width: 100%;
+  padding: 14px 24px;
+  color: #303841; }
+  .consentPage .user--title {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 10px; }
+  .consentPage p {
+    font-size: 18px;
+    font-weight: 500; }
+  .consentPage .action--area a {
+    text-decoration: none; }
+    .consentPage .action--area a.deleteBtn {
+      background-color: #f13535;
+      color: #F1F1F1;
+      border-radius: 100px; }
+
+@media (min-width: 768px) {
+  /* md breakpoint */
+  .consentPage {
+    width: 50%; }
+  .row.container--row {
+    transform: translateX(-100px); } }

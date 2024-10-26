@@ -1,9 +1,14 @@
 <?php
+require "../partials/toast.php";
+
 session_start();
 
 if(!isset($_SESSION['username'])){
     header('Location: ../partials/error.php');
 }
+
+// Getting the current user...
+$user = $_SESSION['username'];
 
 // parsing the env file...
 $env = parse_ini_file('../.env');
@@ -22,7 +27,7 @@ if(!$conn){
 }
 
 // Getting all Data from db.
-$query = "SELECT * FROM booktable";
+$query = "SELECT * FROM booktable WHERE user='$user'";
 
 $result = mysqli_query($conn, $query);
 
@@ -30,8 +35,6 @@ if($result){
     // close connection...
     mysqli_close($conn);
 }
-
-// echo "Congratulation ".$_SESSION['bookedCustomerName']."Your table is booked!";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,10 +54,18 @@ if($result){
 <link rel="icon" href="/imgs/logo.png" type="image/png" />
 </head>
 <body>
+    <!-- for rendering toast message... -->
+    <?php 
+        if(isset($_SESSION["CancelStatus"])){
+            toastMessage($_SESSION["CancelStatus"]);
+            unset($_SESSION["CancelStatus"]);
+        }
+    ?>
+
     <div class="booking--area">
     <div class="container">
         <h5 class="booking--title dancing--script">Get Your all bookings!</h5>
-        <button onclick="history.back()" class="btn btn-light mb-3 rounded-pill px-5 py-2">Back</button>
+        <a href="/" class="btn btn-light mb-3 rounded-pill px-5 py-2">Home</a>
         <div class="row">
      <?php 
     if(mysqli_num_rows($result) > 0){
@@ -68,7 +79,7 @@ if($result){
                             <h5>Members:- ' . $data["user_count"] .'</h5>
                             <h5>Booked Date:- ' . $data["user_date"] .'</h5>
                         </div>
-                    <a href="/user/cancelbooking.php?id='. $data["booking_id"] .'" class="cancel--btn px-5 py-2">Cancel</a>
+                    <a href="/partials/cancelBook.php?id='. $data["booking_id"] .'" class="cancel--btn px-5 py-2">Cancel</a>
                     </div>
                 </div>
             ';
@@ -79,5 +90,8 @@ if($result){
     </div>
     </div>
     </div>
+
+
+<script type="text/javascript" src="/js/toast.js"></script>
 </body>
 </html>

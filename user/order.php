@@ -4,8 +4,10 @@
         header('Location: ../partials/error.php');
     }
 
-// parsing the env file...
-$env = parse_ini_file('../.env');
+    $user = $_SESSION['username'];
+
+    // parsing the env file...
+    $env = parse_ini_file('../.env');
 
 // database creadentials....
 $hostname = $env['HOSTNAME'];
@@ -21,7 +23,7 @@ $dbName =   $env['DATABASE'];
     }
 
     // Getting all Data from db.
-    $query = "SELECT * FROM productData";
+    $query = "SELECT * FROM productData WHERE user='$user'";
 
     $result = mysqli_query($conn, $query);
 

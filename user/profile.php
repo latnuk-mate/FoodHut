@@ -1,12 +1,12 @@
 <?php
 
-use function PHPSTORM_META\type;
-
 session_start();
 
 if(!isset($_SESSION['username'])){
     header('Location: ../partials/error.php');
 }
+
+$user = $_SESSION['username'];
 
 // parsing the env file...
 $env = parse_ini_file('../.env');
@@ -25,15 +25,15 @@ if(!$conn){
 }
 
 // Getting all Data from db.
-$query = "SELECT * FROM userrecord";
+$query = "SELECT * FROM userrecord WHERE name='$user'";
 
 $result = mysqli_query($conn, $query);
 
 
 // getting other information...
-$bookings = mysqli_query($conn, "SELECT * FROM booktable");
+$bookings = mysqli_query($conn, "SELECT * FROM booktable WHERE user='$user'");
 
-$orderedItem = mysqli_query($conn, "SELECT * FROM productData");
+$orderedItem = mysqli_query($conn, "SELECT * FROM productData WHERE user='$user'");
 
 
 if($result){
@@ -70,7 +70,7 @@ $phone;
     <!-- profile page... -->
      <div class="UserProfile">
      <div class="container">
-        <div class="row">
+        <div class="row container--row">
             <div class="col-lg-6">
                 <div class="profile--area">
                     <div class="left--side--profile d-none d-md-flex">
@@ -123,7 +123,7 @@ $phone;
     <!-- form field... -->
             <div class="form--field">
                 <h5 class="form--title">Update Your Information!</h5>
-                <form action="/partials/updateProfile.php" method="post" class="shadow-sm p-3">
+                <form action="profileUpdate.php" method="post" class="shadow-sm p-3">
                     <div class="form-group mb-2">
                         <label for="name">Name</label>
                         <input type="text"

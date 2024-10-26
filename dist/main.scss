@@ -1097,7 +1097,7 @@ body{
 	color: $body-color;
 
 	.row{
-			justify-content: center;
+			justify-content: center;	
 		}
 
 
@@ -1195,5 +1195,78 @@ body{
 		}
 
 }
+
+
+
+// toast message..
+
+.toast--container{
+	z-index: 9999;
+
+
+	.toast--message{
+	position: relative;
+	background-color: $secondary-color;
+	color: $body-color;
+	border-radius: 10px;
+	text-align: center;
+	padding: 8px 10px;
+
+	.close--btn{
+		position: absolute;
+		right: 5px;
+		top: 5px;
+		color: $body-color !important;
+	}
+
+}
+
+}
+
+.consentPage{
+	width: 100%;
+	padding: 14px 24px;
+	color: $primary-color;
+
+
+	.user--title{
+		font-size: $large--text;
+		font-weight: 700;
+		margin-bottom: 10px;
+	}
+
+	p{
+		font-size: $medium--text;
+		font-weight: 500;
+	}
+
+	.action--area{
+		a{
+			text-decoration: none;
+		
+			&.deleteBtn{
+				background-color: rgb(241, 53, 53);
+				color: $body-color;
+				border-radius: 100px;
+			}
+		}
+	}
+}
+
+
+@media (min-width: 768px) { /* md breakpoint */
+	.consentPage{
+		width: 50%;
+	}
+
+	.row{
+		&.container--row{
+			transform: translateX(-100px);
+		}
+		
+	}
+}
+
+
 
 

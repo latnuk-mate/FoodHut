@@ -31,7 +31,7 @@
                 <i class="fa-solid fa-calendar"></i>
              </a>
 
-             <a href="user/delete.php" class="profile--links">
+             <a href="partials/ConfirmDelete.php" class="profile--links">
                     Delete Account
                 <i class="fa-solid fa-trash"></i>
              </a>

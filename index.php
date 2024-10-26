@@ -1,4 +1,6 @@
 <?php 
+	require "partials/toast.php";
+
     session_start();
 ?>
 
@@ -36,6 +38,20 @@
 	<div class="loader"></div>
 	<div class="loader"></div>
  </div>
+
+	    <!-- for rendering toast message... -->
+		<?php 
+		if(isset($_SESSION["invalidEmail"])){
+           	toastMessage($_SESSION["invalidEmail"]);
+            unset($_SESSION["invalidEmail"]);
+        }
+
+		if(isset($_SESSION["invalidPhone"])){
+            toastMessage($_SESSION["invalidPhone"]);
+            unset($_SESSION["invalidPhone"]);
+        }
+    ?>
+
 
 		<!-- settings page modal --> 
 		<?php include("partials/settings.php"); ?>
@@ -440,6 +456,7 @@ Welcome to FoodHut, where fast food meets flavor and convenience! At FoodHut, we
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="js/toast.js"></script>
 
 <!-- setting up the animation... -->
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>

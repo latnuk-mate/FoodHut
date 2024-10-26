@@ -19,7 +19,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' and isset($_SESSION['username'])){
     $count = $_POST['bookedCustomerCount'];
 
     // create a session variable..
-    $_SESSION['bookedCustomerName'] = $name;
+    $user = $_SESSION['username'];
 
 
     //  connect the database...
@@ -31,8 +31,8 @@ if(!$conn){
 
 
 // inserting data into table...
-$query = "INSERT INTO BookTable (user_name, user_phone, user_count, user_date)
-VALUES('$name', '$phone' , '$count', '$date')";
+$query = "INSERT INTO BookTable (user, user_name, user_phone, user_count, user_date)
+VALUES('$user' , '$name', '$phone' , '$count', '$date')";
 
 if(mysqli_query($conn , $query)){
 mysqli_close($conn);

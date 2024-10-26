@@ -3,7 +3,7 @@ $(window).on( 'load' , function(){
 	// hide the preloader after certain time span
 	setTimeout(() => {
 		$(".preloader").css("display", 'none');
-	}, 600);	
+	}, 500);
 
 	
 	$('.navbar-nav .nav-item .nav-link').click(function(){
@@ -118,7 +118,7 @@ $(window).on( 'load' , function(){
 			}
 
 			$('.tableForm').unbind('submit').submit();
-
+		
 			});
 
 
@@ -129,13 +129,20 @@ $(window).on( 'load' , function(){
 			event.preventDefault();
 			let number = $('#userPhone').val();
 			let pass = $('#userPass').val();
+			const email = $('#email').val();
 			let pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/;
+			const emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-					if($.isNumeric(number)){
-					if(number.length < 10 || number.length > 10){
-						$('#signup--msg--phone').html('Please provide a correct number!');
-						return false;
-					}
+				if(!emailPattern.test(email)){
+					$('.msg--for--email').html('Email address not valid!');
+					return false;
+				}
+
+				if($.isNumeric(number)){
+				if(number.length < 10 || number.length > 10){
+					$('#signup--msg--phone').html('Please provide a correct number!');
+					return false;
+				}
 				
 			}else{
 				$('#signup--msg--phone').html('Please provide number!');
@@ -156,12 +163,6 @@ $(window).on( 'load' , function(){
 	let year = date.getFullYear();
 	$("#year").html(` ${year} `);
 
-
-	// flashPopup
-
-	$('.flashPopUp').click(function(){
-		$('#flashBoard').css('visibility', 'hidden');
-	})
 
 });
 
