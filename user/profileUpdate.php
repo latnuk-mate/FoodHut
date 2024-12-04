@@ -4,11 +4,8 @@ session_start();
    // parsing the env file...
    $env = parse_ini_file('../.env');
    
-   // database creadentials....
-   $hostname = $env['HOSTNAME'];
-   $username = $env['USERNAME'];
-   $password = $env['PASSWORD'];
-   $dbName =   $env['DATABASE'];
+// database credentials for postgreSQL...
+$connString = $env['CONNECTION_STRING'];
 
 if($_POST){
 
@@ -18,21 +15,21 @@ if($_POST){
     $user = $_SESSION['username'];
 
     //  connect the database...
-    $conn = mysqli_connect($hostname, $username, $password, $dbName);
+    $conn = pg_connect($connString);
 
     if(!$conn){
-        die('connection failed'.mysqli_connect_error());
+        die('connection failed'.pg_last_error());
     }
     
     
     $query = "UPDATE userrecord SET name='$name' , phone='$phone' WHERE name='$user'";
 
-    if(mysqli_query($conn , $query)){
-        mysqli_close($conn);
+    if(pg_query($conn , $query)){
+        pg_close($conn);
         $_SESSION['username'] = $name;
         header("Location: /user/profile.php");
     }else{
-        die('failed to insert data'.mysqli_error($conn)); 
+        die('failed to insert data'.pg_last_error($conn)); 
     }
 
 }

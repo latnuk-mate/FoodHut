@@ -1,12 +1,5 @@
 # FoodHut
 The application to order your favorite food.
 
-
-<!-- 
-===== Todos =====
-
-fix the delete action in setting page..
-set up a route for delete user
-
- -->
- 
+# Project Update
+Project database was shifted to PostgreSQL from MySql due to temporary drawbacks.

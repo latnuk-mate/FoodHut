@@ -8,23 +8,20 @@ if(!isset($_SESSION['username'])){
 // parsing the env file...
 $env = parse_ini_file('../.env');
 
-// database creadentials....
-$hostname = $env['HOSTNAME'];
-$username = $env['USERNAME'];
-$password = $env['PASSWORD'];
-$dbName =   $env['DATABASE'];
+// database credentials for postgreSQL...
+$connString = $env['CONNECTION_STRING'];
 
 //  connect the database...
-$conn = mysqli_connect($hostname, $username, $password, $dbName);
+$conn = pg_connect($connString);
 
 if(!$conn){
-    die('connection failed'.mysqli_connect_error());
+    die('connection failed'.pg_last_error());
 }
 
 // Getting all Data from db.
 $query = "SELECT * FROM booktable";
 
-$result = mysqli_query($conn, $query);
+$result = pg_query($conn, $query);
 
 // echo "Congratulation ".$_SESSION['bookedCustomerName']."Your table is booked!";
 ?>
@@ -54,8 +51,8 @@ $result = mysqli_query($conn, $query);
         <h5 class="booking--titile">Get Your all bookings!</h5>
         <div class="row">
      <?php 
-    if(mysqli_num_rows($result) > 0){
-        while($data = mysqli_fetch_assoc($result)){
+    if(pg_num_rows($result) > 0){
+        while($data = pg_fetch_assoc($result)){
             echo '
                 <div class="col-lg-3">
                     <div class="info--area">

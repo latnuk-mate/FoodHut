@@ -5,20 +5,17 @@
 // parsing the env file...
 $env = parse_ini_file('../.env');
 
-// database creadentials....
-$hostname = $env['HOSTNAME'];
-$username = $env['USERNAME'];
-$password = $env['PASSWORD'];
-$dbName =   $env['DATABASE'];
+// database credentials for postgreSQL...
+$connString = $env['CONNECTION_STRING'];
    
 
     if($_POST){
 
     //  connect the database...
-    $conn = mysqli_connect($hostname, $username, $password, $dbName);
+    $conn = pg_connect($connString);
 
     if(!$conn){
-        die('connection failed'.mysqli_connect_error());
+        die('connection failed'.pg_last_error());
     }
 
         $email = $_POST['email'];
@@ -26,14 +23,14 @@ $dbName =   $env['DATABASE'];
 
         $query = "SELECT name , email , password FROM UserRecord WHERE email = '$email'";
 
-        $result = mysqli_query($conn, $query);
+        $result = pg_query($conn, $query);
         
-        $data = mysqli_fetch_assoc($result);
+        $data = pg_fetch_assoc($result);
     
 
             if($data['email'] == $email and $data['password'] == $password){
                 $_SESSION['username'] = $data['name'];
-                mysqli_close($conn);
+                pg_close($conn);
                 header('Location: /');
             }
             else{ echo 'something went wrong!';}

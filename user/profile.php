@@ -11,34 +11,31 @@ $user = $_SESSION['username'];
 // parsing the env file...
 $env = parse_ini_file('../.env');
 
-// database creadentials....
-$hostname = $env['HOSTNAME'];
-$username = $env['USERNAME'];
-$password = $env['PASSWORD'];
-$dbName =   $env['DATABASE'];
+// database credentials for postgreSQL...
+$connString = $env['CONNECTION_STRING'];
 
 //  connect the database...
-$conn = mysqli_connect($hostname, $username, $password, $dbName);
+$conn = pg_connect($connString);
 
 if(!$conn){
-    die('connection failed'.mysqli_connect_error());
+    die('connection failed'.pg_last_error());
 }
 
 // Getting all Data from db.
 $query = "SELECT * FROM userrecord WHERE name='$user'";
 
-$result = mysqli_query($conn, $query);
+$result = pg_query($conn, $query);
 
 
 // getting other information...
-$bookings = mysqli_query($conn, "SELECT * FROM booktable WHERE user='$user'");
+$bookings = pg_query($conn, "SELECT * FROM booktable WHERE ct_user='$user'");
 
-$orderedItem = mysqli_query($conn, "SELECT * FROM productData WHERE user='$user'");
+$orderedItem = pg_query($conn, "SELECT * FROM productData WHERE ct_user='$user'");
 
 
 if($result){
     // close connection...
-    mysqli_close($conn);
+    pg_close($conn);
 }
 
 $name = "";
@@ -85,8 +82,8 @@ $phone;
                 <div class="profile--field">
                     <h5>Your Profile Information!</h5>
                             <?php 
-                        if(mysqli_num_rows($result) > 0){
-                            while($data = mysqli_fetch_assoc($result)){
+                        if(pg_num_rows($result) > 0){
+                            while($data = pg_fetch_assoc($result)){
                                 $name = $data["name"];
                                 $email = $data["email"];
                                 $phone = $data["phone"];
@@ -104,13 +101,13 @@ $phone;
                 <div class="col-sm-6">
                     <div class="booking--info">
                         <h5 class="title">Table Booked</h5>
-                    <h5><?php echo mysqli_num_rows($bookings); ?></h5>
+                    <h5><?php echo pg_num_rows($bookings); ?></h5>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="order--info">
                         <h5 class="title">Ordered Food</h5>
-                    <h5><?php echo mysqli_num_rows($orderedItem); ?></h5>
+                    <h5><?php echo pg_num_rows($orderedItem); ?></h5>
                     </div>
                 </div>
             </div>

@@ -7,11 +7,9 @@ require '../partials/checkMailDomain.php';
 // parsing the env file...
  $env = parse_ini_file('../.env');
 
-// database creadentials....
-$hostname = $env['HOSTNAME'];
-$username = $env['USERNAME'];
-$password = $env['PASSWORD'];
-$dbName =   $env['DATABASE'];
+// database credentials for postgreSQL...
+$connString = $env['CONNECTION_STRING'];
+
 
 function sanitizeInputs($input , $filter){
     $data = filter_var(trim($input) , $filter);
@@ -25,11 +23,11 @@ function sanitizeInputs($input , $filter){
 
 if($_POST){
 
-//  connect the database...
-$conn = mysqli_connect($hostname, $username, $password, $dbName);
+// connect PostgreSQL DB...
+$conn = pg_connect($connString);
 
 if(!$conn){
-    die('connection failed'.mysqli_connect_error());
+    die('connection failed'.pg_last_error());
 }
 
 $name = sanitizeInputs($_POST['username'], FILTER_UNSAFE_RAW);
@@ -39,10 +37,10 @@ $phone = sanitizeInputs($_POST['phone'], FILTER_VALIDATE_INT);
 
 // this is for checking inside the db...
     $query_for_phone = "SELECT phone FROM UserRecord";
-    $result = mysqli_query($conn, $query_for_phone);
+    $result = pg_query($conn, $query_for_phone);
 
     function isInsideDB($phone, $result){
-            while($data = mysqli_fetch_assoc($result)){
+            while($data = pg_fetch_assoc($result)){
                 if($data['phone'] == $phone){
                     return false;
                 }else{
@@ -61,13 +59,13 @@ if(checkMail($email)){ // checking the mail domain records...
 
         $_SESSION['username'] = $name; // creating user session...
 
-        if(mysqli_query($conn , $query)){
-         mysqli_close($conn);
+        if(pg_query($conn , $query)){
+            pg_close($conn);
  
          header('Location: /');
      }
      else{
-       die('failed to insert data'.mysqli_error($conn));  
+       die('failed to insert data'.pg_last_error($conn));  
      }
 
     }else{

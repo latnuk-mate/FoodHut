@@ -10,23 +10,20 @@ $_SESSION['CancelStatus'] = "Your Booking was cancelled!";
 // parsing the env file...
 $env = parse_ini_file('../.env');
 
-// database creadentials....
-$hostname = $env['HOSTNAME'];
-$username = $env['USERNAME'];
-$password = $env['PASSWORD'];
-$dbName =   $env['DATABASE'];
+// database credentials for postgreSQL...
+$connString = $env['CONNECTION_STRING'];
 
 //  connect the database...
-$conn = mysqli_connect($hostname, $username, $password, $dbName);
+$conn = pg_connect($connString);
 
 if(!$conn){
-    die('connection failed'.mysqli_connect_error());
+    die('connection failed'.pg_last_error());
 }
 
 $query = "DELETE FROM booktable WHERE booking_id='$id'";
 
-if(mysqli_query($conn, $query)){
-    mysqli_close($conn);
+if(pg_query($conn, $query)){
+    pg_close($conn);
 }
 
 header("Location: /user/bookings.php");

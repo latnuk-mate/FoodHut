@@ -9,27 +9,25 @@
     // parsing the env file...
     $env = parse_ini_file('../.env');
 
-// database creadentials....
-$hostname = $env['HOSTNAME'];
-$username = $env['USERNAME'];
-$password = $env['PASSWORD'];
-$dbName =   $env['DATABASE'];
+
+// database credentials for postgreSQL...
+$connString = $env['CONNECTION_STRING'];
 
     //  connect the database...
-    $conn = mysqli_connect($hostname, $username, $password, $dbName);
+    $conn = pg_connect($connString);
 
     if(!$conn){
-        die('connection failed'.mysqli_connect_error());
+        die('connection failed'.pg_last_error());
     }
 
     // Getting all Data from db.
-    $query = "SELECT * FROM productData WHERE user='$user'";
+    $query = "SELECT * FROM productData WHERE ct_user='$user'";
 
-    $result = mysqli_query($conn, $query);
+    $result = pg_query($conn, $query);
 
     if($result){
         // close connection...
-        mysqli_close($conn);
+        pg_close($conn);
     }
 
 
@@ -64,8 +62,8 @@ $dbName =   $env['DATABASE'];
     <div class="col-lg-7">
 
     <?php 
-    if(mysqli_num_rows($result) > 0){
-        while($data = mysqli_fetch_assoc($result)){
+    if(pg_num_rows($result) > 0){
+        while($data = pg_fetch_assoc($result)){
             echo '
                 <div class="row shadow-lg mb-3 align-items-center p-2" data-aos="fade-up">
                     <div class="col-6">

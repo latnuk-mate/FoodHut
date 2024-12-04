@@ -4,11 +4,9 @@ session_start();
 // parsing the env file...
  $env = parse_ini_file('../.env');
 
-// database creadentials....
-$hostname = $env['HOSTNAME'];
-$username = $env['USERNAME'];
-$password = $env['PASSWORD'];
-$dbName =   $env['DATABASE'];
+// database credentials for postgreSQL...
+$connString = $env['CONNECTION_STRING'];
+
 
 if($_SERVER['REQUEST_METHOD'] === 'POST' and isset($_SESSION['username'])){
 
@@ -23,25 +21,25 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' and isset($_SESSION['username'])){
 
 
     //  connect the database...
-$conn = mysqli_connect($hostname, $username, $password, $dbName);
+$conn = pg_connect($connString);
 
 if(!$conn){
-    die('connection failed'.mysqli_connect_error());
+    die('connection failed'.pg_last_error());
 }
 
 
 // inserting data into table...
-$query = "INSERT INTO BookTable (user, user_name, user_phone, user_count, user_date)
+$query = "INSERT INTO BookTable (ct_user, user_name, user_phone, user_count, user_date)
 VALUES('$user' , '$name', '$phone' , '$count', '$date')";
 
-if(mysqli_query($conn , $query)){
-mysqli_close($conn);
+if(pg_query($conn , $query)){
+pg_close($conn);
 
 // on successfull response redirects to ....
 header('Location: /user/bookings.php');
 }
 else{
-die('failed to insert data'.mysqli_error($conn));  
+die('failed to insert data'.pg_last_error($conn));  
 } 
 
 }else{
