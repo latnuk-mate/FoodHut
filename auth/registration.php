@@ -43,10 +43,10 @@ $phone = sanitizeInputs($_POST['phone'], FILTER_VALIDATE_INT);
             while($data = pg_fetch_assoc($result)){
                 if($data['phone'] == $phone){
                     return false;
-                }else{
-                    return true;
                 }
             }
+
+            return true;
     }
 
 
